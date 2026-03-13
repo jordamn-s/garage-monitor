@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: garage_monitor
+    database: garage_monitor
+    schema: public
+    tables:
+      - name: raw_events
+        description: "Raw RF signal events captured by rtl_433 and inserted by listener.py"
+        columns:
+          - name: id
+            description: "Auto-incrementing primary key"
+          - name: received_at
+            description: "Timestamp when Python listener inserted the row"
+          - name: device_time
+            description: "Timestamp when rtl_433 received the signal"
+          - name: rows
+            description: "JSONB array containing signal data including hex code and bit length"
+          - name: codes
+            description: "JSONB array containing formatted code strings"
+          - name: raw_payload
+            description: "Complete raw JSON payload from rtl_433"
